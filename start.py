@@ -7,14 +7,14 @@ from sentence_transformers import SentenceTransformer
 
 cloud_id = "My_deployment:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJDZlODAxZjQ5YzAwNDQ5MGRhNDFlOGM3Y2U0MmFmYmQxJGQ2ZTE2YjQ1OWNjMTRhNmZiNDE0ZGZmNmJmN2JjMjll"  # 从 Elastic Cloud 控制台获取
 api_key = "TzVkMldKTUJDVjk5bTVXZVFFeGg6LVpiZk04UFZUUE95QXpjbE9VZUttdw=="
-url = "https://raw.githubusercontent.com/Kaiyuan-Tan/CSE-512-bonus-point/refs/heads/main/data.json"
+url = "https://raw.githubusercontent.com/Kaiyuan-Tan/CSE-512-group-project/refs/heads/main/data.json"
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 client = Elasticsearch(
     cloud_id=cloud_id,
     api_key=api_key
 )
-index_name = "course"
+index_name = "books"
 if client.indices.exists(index=index_name):
     client.indices.delete(index=index_name)
 if not client.indices.exists(index=index_name):
@@ -78,7 +78,7 @@ def home():
 
 @app.route("/search")
 def search():
-    query = request.args.get("query")  # 获取 'query' 参数
+    query = request.args.get("query") 
     response = client.search(
         index="course",
         knn={

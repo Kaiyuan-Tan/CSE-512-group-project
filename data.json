@@ -1,857 +1,422 @@
 [
     {
-        "title": "Distributed Database Systems",
-        "code": "512",
-        "subject": "CSE",
-        "description": "Distributed database design, query processing, and transaction processing. Distributed database architectures and interoperability. Emerging technology.",
-        "credit": 3,
-        "instructor": "Bharatesh Chakravarthi"
-    },
-    {
-        "title": "Fundamentals of Statistical Learning and Pattern Recognition",
-        "code": "569",
-        "subject": "CSE",
-        "description": "Concepts of statistical pattern recognition, Bayesian decision theory, parameter estimation, discriminant analysis, basics of artificial neural networks, basics of data clustering. Knowledge of college-level calculus, linear algebra, basic probability theory and proficiency in computer programming is necessary to be successful in this course.",
-        "instructor": "Baoxin Li"
-    },
-    {
-        "title": "Data Visualization",
-        "code": "578",
-        "subject": "CSE",
-        "description": "Amidst the information flood in which we are currently immersed, visualizations can be a well-placed treetop. The rise of big data has the potential to inform decisions, and visual representations can play a crucial intermediate role in our daily information consumption. Covers techniques and algorithms for creating effective visualizations based on principles from graphic design, visual art, perceptual psychology and cognitive science to enhance the understanding of complex data.",
-        "credit": 3,
-        "instructor": "Chirs Bryan"
-    },
-    {
-        "title": "Just For Test",
-        "code": "599",
-        "subject": "EEE",
-        "description": "Just for testing. Something ramdom. Meaningless. Don't care",
-        "credit": 3,
-        "instructor": "Andrew Wu"
-    },
-    {
-        "title": "Advanced Machine Learning",
-        "code": "580",
-        "subject": "CSE",
-        "description": "An advanced course covering state-of-the-art machine learning algorithms, including deep learning, reinforcement learning, and unsupervised learning techniques.",
-        "credit": 3,
-        "instructor": "James Wang"
-    },
-    {
-        "title": "Introduction to Computer Vision",
-        "code": "522",
-        "subject": "CSE",
-        "description": "Basic concepts and techniques in computer vision, including image processing, feature extraction, object detection, and recognition.",
-        "credit": 3,
-        "instructor": "Marina Sokolova"
-    },
-    {
-        "title": "Principles of Artificial Intelligence",
-        "code": "510",
-        "subject": "CSE",
-        "description": "Explores foundational principles of AI, covering search algorithms, knowledge representation, logical reasoning, and machine learning.",
-        "credit": 3,
-        "instructor": "Daniel Ross"
-    },
-    {
-        "title": "Natural Language Processing",
-        "code": "524",
-        "subject": "CSE",
-        "description": "Covers computational techniques for processing and understanding human language, including text classification, language modeling, and sequence tagging.",
-        "credit": 3,
-        "instructor": "Linda Lee"
-    },
-    {
-        "title": "Big Data Analytics",
-        "code": "572",
-        "subject": "CSE",
-        "description": "Techniques for managing, processing, and analyzing large datasets. Topics include data mining, machine learning, and scalable data analysis.",
-        "credit": 3,
-        "instructor": "Peter Kim"
-    },
-    {
-        "title": "Software Engineering Principles",
-        "code": "515",
-        "subject": "CSE",
-        "description": "An introduction to software development methodologies, including Agile, design patterns, and best practices in software engineering.",
-        "credit": 3,
-        "instructor": "Emma Green"
-    },
-    {
-        "title": "Introduction to Cybersecurity",
-        "code": "530",
-        "subject": "CSE",
-        "description": "Basics of cybersecurity including network security, cryptography, threat analysis, and secure software design.",
-        "credit": 3,
-        "instructor": "Alice Tan"
-    },
-    {
-        "title": "Database Systems",
-        "code": "541",
-        "subject": "CSE",
-        "description": "Covers relational database design, SQL, normalization, and introduction to non-relational databases.",
-        "credit": 3,
-        "instructor": "John White"
-    },
-    {
-        "title": "Human-Computer Interaction",
-        "code": "550",
-        "subject": "CSE",
-        "description": "Focuses on designing user-friendly interfaces, usability testing, and interaction design.",
-        "credit": 3,
-        "instructor": "Sophia Miller"
-    },
-    {
-        "title": "Fundamentals of Robotics",
-        "code": "553",
-        "subject": "CSE",
-        "description": "Introduction to robotics covering kinematics, motion planning, sensor integration, and robot control.",
-        "credit": 3,
-        "instructor": "Thomas Zhang"
-    },
-    {
-        "title": "Introduction to Distributed Systems",
-        "code": "555",
-        "subject": "CSE",
-        "description": "Basics of distributed systems, covering communication protocols, fault tolerance, and distributed data storage.",
-        "credit": 3,
-        "instructor": "Jessica Brown"
-    },
-    {
-        "title": "Embedded Systems Design",
-        "code": "521",
-        "subject": "EEE",
-        "description": "Covers hardware and software aspects of designing embedded systems, including microcontrollers and real-time programming.",
-        "credit": 3,
-        "instructor": "Albert Chan"
-    },
-    {
-        "title": "Advanced Control Systems",
-        "code": "561",
-        "subject": "EEE",
-        "description": "Study of modern control techniques, including adaptive control, nonlinear control, and optimal control.",
-        "credit": 3,
-        "instructor": "Michelle Carter"
-    },
-    {
-        "title": "Digital Signal Processing",
-        "code": "552",
-        "subject": "EEE",
-        "description": "Principles of digital signal processing including filtering, Fourier analysis, and DSP applications.",
-        "credit": 3,
-        "instructor": "Kevin Yang"
-    },
-    {
-        "title": "Introduction to Renewable Energy Systems",
-        "code": "570",
-        "subject": "EEE",
-        "description": "Fundamentals of renewable energy technologies, including solar, wind, and biomass energy systems.",
-        "credit": 3,
-        "instructor": "Susan Rivera"
-    },
-    {
-        "title": "Power System Analysis",
-        "code": "545",
-        "subject": "EEE",
-        "description": "Analysis and modeling of power systems, including power flow, fault analysis, and stability studies.",
-        "credit": 3,
-        "instructor": "Philip Ward"
-    },
-    {
-        "title": "Machine Learning for Engineers",
-        "code": "582",
-        "subject": "EEE",
-        "description": "Application of machine learning techniques to engineering problems, covering regression, classification, and clustering.",
-        "credit": 3,
-        "instructor": "Ying Wu"
-    },
-    {
-        "title": "Quantum Computing Fundamentals",
-        "code": "590",
-        "subject": "CSE",
-        "description": "Introduction to quantum computing concepts, algorithms, and applications in areas such as cryptography and optimization.",
-        "credit": 3,
-        "instructor": "Leo Harris"
-    },
-    {
-        "title": "Bioinformatics Algorithms",
-        "code": "567",
-        "subject": "CSE",
-        "description": "Computational techniques in bioinformatics, including sequence alignment, gene prediction, and phylogenetic analysis.",
-        "credit": 3,
-        "instructor": "Nancy Patel"
-    },
-    {
-        "title": "Ethics in Technology",
-        "code": "598",
-        "subject": "CSE",
-        "description": "Examines ethical considerations in technology development, including AI ethics, privacy, and social impacts.",
-        "credit": 3,
-        "instructor": "Rachel Lee"
-    },
-    {
-        "title": "Microeconomics Theory",
-        "code": "101",
-        "subject": "ECN",
-        "description": "Introduction to microeconomic principles including supply and demand, consumer behavior, and market structures.",
-        "credit": 3,
-        "instructor": "Alice Johnson"
-    },
-    {
-        "title": "Macroeconomics",
-        "code": "102",
-        "subject": "ECN",
-        "description": "Explores aggregate economic behavior, covering GDP, inflation, unemployment, and fiscal policy.",
-        "credit": 3,
-        "instructor": "John Smith"
-    },
-    {
-        "title": "Materials Characterization",
-        "code": "210",
-        "subject": "MSE",
-        "description": "Introduction to techniques for characterizing materials, including microscopy, spectroscopy, and X-ray diffraction.",
-        "credit": 3,
-        "instructor": "Dr. Emily Lee"
-    },
-    {
-        "title": "Thermodynamics of Materials",
-        "code": "220",
-        "subject": "MSE",
-        "description": "Covers the thermodynamic principles relevant to material systems, phase equilibria, and material transformations.",
-        "credit": 3,
-        "instructor": "Dr. Thomas Young"
-    },
-    {
-        "title": "Cell Biology",
-        "code": "101",
-        "subject": "BIO",
-        "description": "Examines cellular structure and function, including cell organelles, cellular metabolism, and cell signaling.",
-        "credit": 3,
-        "instructor": "Dr. Sarah Martinez"
-    },
-    {
-        "title": "Genetics and Evolution",
-        "code": "102",
-        "subject": "BIO",
-        "description": "Introduction to genetics, heredity, and evolutionary principles that shape biological diversity.",
-        "credit": 3,
-        "instructor": "Dr. Mark Davis"
-    },
-    {
-        "title": "Introduction to Environmental Science",
-        "code": "100",
-        "subject": "ENV",
-        "description": "Overview of environmental science, covering ecosystems, biodiversity, pollution, and human impact on the environment.",
-        "credit": 3,
-        "instructor": "Professor Linda Green"
-    },
-    {
-        "title": "Sustainable Energy",
-        "code": "201",
-        "subject": "ENV",
-        "description": "Explores renewable energy sources and sustainable energy practices, including solar, wind, and bioenergy.",
-        "credit": 3,
-        "instructor": "Dr. Robert Hall"
-    },
-    {
-        "title": "Fundamentals of Organic Chemistry",
-        "code": "110",
-        "subject": "CHM",
-        "description": "Basic principles of organic chemistry including structure, bonding, and functional groups.",
-        "credit": 3,
-        "instructor": "Dr. Samantha Lee"
-    },
-    {
-        "title": "Physical Chemistry",
-        "code": "210",
-        "subject": "CHM",
-        "description": "Study of physical principles in chemistry, covering thermodynamics, quantum mechanics, and spectroscopy.",
-        "credit": 3,
-        "instructor": "Dr. Richard Wang"
-    },
-    {
-        "title": "International Economics",
-        "code": "202",
-        "subject": "ECN",
-        "description": "Study of international trade, finance, exchange rates, and economic policies affecting global markets.",
-        "credit": 3,
-        "instructor": "Dr. Karen Taylor"
-    },
-    {
-        "title": "Polymeric Materials",
-        "code": "330",
-        "subject": "MSE",
-        "description": "Covers properties, processing, and applications of polymeric materials used in engineering and manufacturing.",
-        "credit": 3,
-        "instructor": "Dr. Nina Patel"
-    },
-    {
-        "title": "Human Physiology",
-        "code": "201",
-        "subject": "BIO",
-        "description": "Examines human body systems and their functions, including circulatory, respiratory, and nervous systems.",
-        "credit": 3,
-        "instructor": "Dr. James Reed"
-    },
-    {
-        "title": "Biomaterials",
-        "code": "350",
-        "subject": "MSE",
-        "description": "Study of materials used in medical devices and tissue engineering, focusing on biocompatibility and material properties.",
-        "credit": 3,
-        "instructor": "Dr. Anna Baker"
-    },
-    {
-        "title": "Ecology and Conservation Biology",
-        "code": "320",
-        "subject": "BIO",
-        "description": "Principles of ecology, biodiversity, and conservation biology, focusing on ecosystems and environmental challenges.",
-        "credit": 3,
-        "instructor": "Dr. Susan Collins"
-    },
-    {
-        "title": "Environmental Economics",
-        "code": "305",
-        "subject": "ECN",
-        "description": "Analyzes economic aspects of environmental issues, including resource management and environmental policies.",
-        "credit": 3,
-        "instructor": "Professor Chris Morgan"
-    },
-    {
-        "title": "Organic Chemistry II",
-        "code": "210",
-        "subject": "CHM",
-        "description": "Continues study of organic chemistry focusing on reaction mechanisms, synthesis, and spectroscopic techniques.",
-        "credit": 3,
-        "instructor": "Dr. Patricia Yang"
-    },
-    {
-        "title": "Advanced Structural Materials",
-        "code": "410",
-        "subject": "MSE",
-        "description": "Study of high-performance materials used in engineering applications, focusing on mechanical properties and processing.",
-        "credit": 3,
-        "instructor": "Dr. Michael Clark"
-    },
-    {
-        "title": "Economic Development",
-        "code": "404",
-        "subject": "ECN",
-        "description": "Explores issues related to economic growth and development in emerging economies.",
-        "credit": 3,
-        "instructor": "Dr. Lisa Brown"
-    },
-    {
-        "title": "Climate Science",
-        "code": "301",
-        "subject": "ENV",
-        "description": "Study of climate systems, climate change science, and its implications on ecosystems and human societies.",
-        "credit": 3,
-        "instructor": "Professor Daniel Carter"
-    },
-    {
-        "title": "Behavioral Economics",
-        "code": "301",
-        "subject": "ECN",
-        "description": "Introduction to behavioral economic theory, focusing on how psychological factors influence economic decision-making.",
-        "credit": 3,
-        "instructor": "Dr. Paul Stevens"
-    },
-    {
-        "title": "Economic Statistics",
-        "code": "305",
-        "subject": "ECN",
-        "description": "Fundamental statistics concepts applied to economic data analysis, including probability, regression, and hypothesis testing.",
-        "credit": 3,
-        "instructor": "Dr. Lucy Hayes"
-    },
-    {
-        "title": "Econometrics",
-        "code": "400",
-        "subject": "ECN",
-        "description": "Study of quantitative methods in economics, including multiple regression and time-series analysis.",
-        "credit": 3,
-        "instructor": "Dr. David Moore"
-    },
-    {
-        "title": "Advanced Organic Chemistry",
-        "code": "311",
-        "subject": "CHM",
-        "description": "In-depth study of organic synthesis, reaction mechanisms, and molecular structure.",
-        "credit": 3,
-        "instructor": "Dr. Sarah Lee"
-    },
-    {
-        "title": "Physical Chemistry: Quantum Mechanics",
-        "code": "320",
-        "subject": "CHM",
-        "description": "Covers quantum mechanics principles as applied to chemical systems, including molecular orbitals and spectroscopy.",
-        "credit": 3,
-        "instructor": "Dr. Thomas Green"
-    },
-    {
-        "title": "Biochemistry I",
-        "code": "401",
-        "subject": "CHM",
-        "description": "Structure and function of biomolecules, metabolic pathways, and enzymology.",
-        "credit": 3,
-        "instructor": "Dr. Emily Brown"
-    },
-    {
-        "title": "Introduction to Environmental Policy",
-        "code": "210",
-        "subject": "ENV",
-        "description": "Study of environmental policies, regulations, and laws at national and international levels.",
-        "credit": 3,
-        "instructor": "Dr. Rachel Cooper"
-    },
-    {
-        "title": "Climate Change and Society",
-        "code": "350",
-        "subject": "ENV",
-        "description": "Examines the societal impacts of climate change and strategies for mitigation and adaptation.",
-        "credit": 3,
-        "instructor": "Dr. Peter Adams"
-    },
-    {
-        "title": "Advanced Materials Processing",
-        "code": "420",
-        "subject": "MSE",
-        "description": "Techniques for processing materials, including advanced casting, powder metallurgy, and rapid prototyping.",
-        "credit": 3,
-        "instructor": "Dr. Linda Martinez"
-    },
-    {
-        "title": "Nanomaterials",
-        "code": "360",
-        "subject": "MSE",
-        "description": "Study of nanomaterials' properties, synthesis methods, and applications in engineering.",
-        "credit": 3,
-        "instructor": "Dr. Michael Liu"
-    },
-    {
-        "title": "Marine Biology",
-        "code": "330",
-        "subject": "BIO",
-        "description": "Explores ocean ecosystems, marine organisms, and the ecological interactions within marine environments.",
-        "credit": 3,
-        "instructor": "Dr. Susan Rogers"
-    },
-    {
-        "title": "Genomics and Bioinformatics",
-        "code": "410",
-        "subject": "BIO",
-        "description": "Introduction to genomic analysis and bioinformatics tools used in DNA sequencing and gene prediction.",
-        "credit": 3,
-        "instructor": "Dr. Andrew King"
-    },
-    {
-        "title": "Microbial Ecology",
-        "code": "350",
-        "subject": "BIO",
-        "description": "Study of microbial communities and their roles in ecological processes and environmental sustainability.",
-        "credit": 3,
-        "instructor": "Dr. Laura Bennett"
-    },
-    {
-        "title": "Economic Development in Asia",
-        "code": "308",
-        "subject": "ECN",
-        "description": "Explores economic growth, industrialization, and development policies in Asian economies.",
-        "credit": 3,
-        "instructor": "Dr. John Li"
-    },
-    {
-        "title": "Environmental Toxicology",
-        "code": "310",
-        "subject": "ENV",
-        "description": "Studies toxic substances in the environment, their effects on ecosystems and human health.",
-        "credit": 3,
-        "instructor": "Dr. Rebecca Hall"
-    },
-    {
-        "title": "Introduction to Public Health",
-        "code": "101",
-        "subject": "HSC",
-        "description": "Overview of public health principles, focusing on disease prevention, epidemiology, and health policies.",
-        "credit": 3,
-        "instructor": "Dr. William Harris"
-    },
-    {
-        "title": "Plant Physiology",
-        "code": "220",
-        "subject": "BIO",
-        "description": "Study of plant functions, including photosynthesis, transpiration, and nutrient transport.",
-        "credit": 3,
-        "instructor": "Dr. Elizabeth Scott"
-    },
-    {
-        "title": "Environmental Engineering",
-        "code": "340",
-        "subject": "ENV",
-        "description": "Fundamentals of environmental engineering, including water treatment, waste management, and pollution control.",
-        "credit": 3,
-        "instructor": "Dr. Mark Nelson"
-    },
-    {
-        "title": "Economic Analysis of Law",
-        "code": "325",
-        "subject": "ECN",
-        "description": "Application of economic principles to legal issues such as property rights, contracts, and criminal law.",
-        "credit": 3,
-        "instructor": "Dr. Jessica Brown"
-    },
-    {
-        "title": "Neurobiology",
-        "code": "420",
-        "subject": "BIO",
-        "description": "Introduction to the structure and function of the nervous system, including neuron physiology and brain anatomy.",
-        "credit": 3,
-        "instructor": "Dr. Benjamin Lee"
-    },
-    {
-        "title": "Inorganic Chemistry",
-        "code": "330",
-        "subject": "CHM",
-        "description": "Study of inorganic compounds, their properties, reactions, and applications in various industries.",
-        "credit": 3,
-        "instructor": "Dr. Karen Davis"
-    },
-    {
-        "title": "Agricultural Economics",
-        "code": "420",
-        "subject": "ECN",
-        "description": "Economic principles applied to agriculture, covering food production, pricing, and rural development.",
-        "credit": 3,
-        "instructor": "Dr. Charles Robinson"
-    },
-    {
-        "title": "Solid State Physics",
-        "code": "401",
-        "subject": "PHY",
-        "description": "Principles of solid-state physics, including crystallography, electronic structure, and semiconductor physics.",
-        "credit": 3,
-        "instructor": "Dr. Robert Chen"
-    },
-    {
-        "title": "Environmental Geology",
-        "code": "220",
-        "subject": "ENV",
-        "description": "Study of geological processes and their impact on the environment, including natural hazards and resource management.",
-        "credit": 3,
-        "instructor": "Dr. Michelle Simmons"
-    },
-    {
-        "title": "Human Genetics",
-        "code": "310",
-        "subject": "BIO",
-        "description": "Genetics of human populations, inheritance patterns, and the role of genetics in disease.",
-        "credit": 3,
-        "instructor": "Dr. George Allen"
-    },
-    {
-        "title": "Environmental Chemistry",
-        "code": "305",
-        "subject": "CHM",
-        "description": "Chemical processes in the environment, including water chemistry, atmospheric reactions, and soil chemistry.",
-        "credit": 3,
-        "instructor": "Dr. Sandra Walker"
-    },
-    {
-        "title": "Biomechanics",
-        "code": "360",
-        "subject": "BIO",
-        "description": "Study of mechanical principles applied to biological systems, including muscle dynamics and joint function.",
-        "credit": 3,
-        "instructor": "Dr. Brandon Wood"
-    },
-    {
-        "title": "Paleontology",
-        "code": "210",
-        "subject": "GEO",
-        "description": "Study of fossils, ancient life forms, and their evolutionary history through geological time.",
-        "credit": 3,
-        "instructor": "Dr. Nancy Lewis"
-    },
-    {
-        "title": "Environmental Impact Assessment",
-        "code": "410",
-        "subject": "ENV",
-        "description": "Principles and methods for assessing environmental impacts of development projects and policies.",
-        "credit": 3,
-        "instructor": "Dr. Harold Knight"
-    },
-    {
-        "title": "Data Structures and Algorithms",
-        "code": "201",
-        "subject": "CSE",
-        "description": "Introduction to data structures such as arrays, stacks, queues, linked lists, and trees, along with algorithms for sorting, searching, and graph traversal.",
-        "credit": 3,
-        "instructor": "Dr. Alan Smith"
-    },
-    {
-        "title": "Operating Systems",
-        "code": "301",
-        "subject": "CSE",
-        "description": "Fundamentals of operating systems including processes, threads, synchronization, memory management, and file systems.",
-        "credit": 3,
-        "instructor": "Dr. Jane Doe"
-    },
-    {
-        "title": "Database Systems",
-        "code": "305",
-        "subject": "CSE",
-        "description": "Introduction to relational databases, SQL, database design, normalization, and transactions.",
-        "credit": 3,
-        "instructor": "Dr. Henry Taylor"
-    },
-    {
-        "title": "Computer Networks",
-        "code": "310",
-        "subject": "CSE",
-        "description": "Study of computer networks, covering OSI and TCP/IP models, protocols, IP addressing, and network security.",
-        "credit": 3,
-        "instructor": "Dr. Lisa Williams"
-    },
-    {
-        "title": "Artificial Intelligence",
-        "code": "405",
-        "subject": "CSE",
-        "description": "Overview of AI concepts including search algorithms, machine learning, natural language processing, and robotics.",
-        "credit": 3,
-        "instructor": "Dr. Susan Clark"
-    },
-    {
-        "title": "Embedded Systems",
-        "code": "420",
-        "subject": "CSE",
-        "description": "Study of embedded systems, including hardware-software integration, real-time processing, and microcontrollers.",
-        "credit": 3,
-        "instructor": "Dr. Thomas Wang"
-    },
-    {
-        "title": "Digital Logic Design",
-        "code": "210",
-        "subject": "EEE",
-        "description": "Basics of digital logic, including combinational and sequential circuits, Karnaugh maps, and Boolean algebra.",
-        "credit": 3,
-        "instructor": "Dr. Michael Brown"
-    },
-    {
-        "title": "Power Systems Analysis",
-        "code": "301",
-        "subject": "EEE",
-        "description": "Study of power generation, transmission, and distribution systems, as well as power flow analysis.",
-        "credit": 3,
-        "instructor": "Dr. Rachel Green"
-    },
-    {
-        "title": "Signal Processing",
-        "code": "310",
-        "subject": "EEE",
-        "description": "Introduction to signal processing techniques, Fourier transforms, and digital filter design.",
-        "credit": 3,
-        "instructor": "Dr. Peter Clark"
-    },
-    {
-        "title": "Machine Learning",
-        "code": "450",
-        "subject": "CSE",
-        "description": "Covers supervised and unsupervised learning, neural networks, support vector machines, and deep learning.",
-        "credit": 3,
-        "instructor": "Dr. Anna Davis"
-    },
-    {
-        "title": "Software Engineering",
-        "code": "315",
-        "subject": "CSE",
-        "description": "Principles and practices of software engineering including software development lifecycle, design patterns, and testing.",
-        "credit": 3,
-        "instructor": "Dr. Chris Wilson"
-    },
-    {
-        "title": "Object-Oriented Programming",
-        "code": "207",
-        "subject": "CSE",
-        "description": "Fundamentals of object-oriented programming including classes, inheritance, polymorphism, and encapsulation.",
-        "credit": 3,
-        "instructor": "Dr. John Evans"
-    },
-    {
-        "title": "Control Systems",
-        "code": "320",
-        "subject": "EEE",
-        "description": "Introduction to control theory, system modeling, stability analysis, and feedback control.",
-        "credit": 3,
-        "instructor": "Dr. Sarah Carter"
-    },
-    {
-        "title": "Microprocessors",
-        "code": "330",
-        "subject": "EEE",
-        "description": "Covers microprocessor architecture, assembly language programming, and interfacing techniques.",
-        "credit": 3,
-        "instructor": "Dr. Benjamin Scott"
-    },
-    {
-        "title": "Computer Vision",
-        "code": "460",
-        "subject": "CSE",
-        "description": "Techniques for image processing, object recognition, and computer vision applications.",
-        "credit": 3,
-        "instructor": "Dr. George Wright"
-    },
-    {
-        "title": "Digital Communications",
-        "code": "410",
-        "subject": "EEE",
-        "description": "Fundamentals of digital communication systems, modulation techniques, and error correction.",
-        "credit": 3,
-        "instructor": "Dr. Sandra Johnson"
-    },
-    {
-        "title": "Cybersecurity",
-        "code": "470",
-        "subject": "CSE",
-        "description": "Study of cybersecurity principles, encryption, network security, and intrusion detection.",
-        "credit": 3,
-        "instructor": "Dr. Emma Thomas"
-    },
-    {
-        "title": "High Voltage Engineering",
-        "code": "450",
-        "subject": "EEE",
-        "description": "Principles of high voltage engineering, including breakdown in gases, liquids, and solids.",
-        "credit": 3,
-        "instructor": "Dr. David Martinez"
-    },
-    {
-        "title": "Data Mining",
-        "code": "440",
-        "subject": "CSE",
-        "description": "Concepts in data mining, including clustering, association rules, and sequential pattern mining.",
-        "credit": 3,
-        "instructor": "Dr. Kevin Lee"
-    },
-    {
-        "title": "Electromagnetic Theory",
-        "code": "310",
-        "subject": "EEE",
-        "description": "Introduction to electromagnetic fields, Maxwell's equations, and wave propagation.",
-        "credit": 3,
-        "instructor": "Dr. Arthur Harris"
-    },
-    {
-        "title": "Compiler Design",
-        "code": "405",
-        "subject": "CSE",
-        "description": "Study of compiler construction, lexical analysis, syntax analysis, and code optimization.",
-        "credit": 3,
-        "instructor": "Dr. Natalie Zhang"
-    },
-    {
-        "title": "Digital Image Processing",
-        "code": "430",
-        "subject": "EEE",
-        "description": "Introduction to image processing techniques including filtering, edge detection, and image segmentation.",
-        "credit": 3,
-        "instructor": "Dr. Julia Wood"
-    },
-    {
-        "title": "Quantum Computing",
-        "code": "490",
-        "subject": "CSE",
-        "description": "Foundations of quantum computing, covering qubits, entanglement, and quantum algorithms.",
-        "credit": 3,
-        "instructor": "Dr. Edward Brooks"
-    },
-    {
-        "title": "Analog Circuits",
-        "code": "220",
-        "subject": "EEE",
-        "description": "Basics of analog circuit design, covering op-amps, filters, and oscillators.",
-        "credit": 3,
-        "instructor": "Dr. Susan Price"
-    },
-    {
-        "title": "Natural Language Processing",
-        "code": "455",
-        "subject": "CSE",
-        "description": "Introduction to NLP covering text processing, language models, and neural network-based NLP techniques.",
-        "credit": 3,
-        "instructor": "Dr. Laura King"
-    },
-    {
-        "title": "Biomedical Signal Processing",
-        "code": "470",
-        "subject": "EEE",
-        "description": "Study of biomedical signals, including ECG, EEG, and signal analysis techniques.",
-        "credit": 3,
-        "instructor": "Dr. Timothy Brooks"
-    },
-    {
-        "title": "Software Testing and Quality Assurance",
-        "code": "320",
-        "subject": "CSE",
-        "description": "Principles of software testing, test design techniques, and quality assurance methods.",
-        "credit": 3,
-        "instructor": "Dr. Olivia Parker"
-    },
-    {
-        "title": "VLSI Design",
-        "code": "350",
-        "subject": "EEE",
-        "description": "Introduction to VLSI design, including digital design flow, layout, and fabrication processes.",
-        "credit": 3,
-        "instructor": "Dr. Greg Moore"
-    },
-    {
-        "title": "Distributed Systems",
-        "code": "440",
-        "subject": "CSE",
-        "description": "Fundamentals of distributed computing, including fault tolerance, replication, and distributed databases.",
-        "credit": 3,
-        "instructor": "Dr. Megan Adams"
-    },
-    {
-        "title": "Antennas and Wave Propagation",
-        "code": "420",
-        "subject": "EEE",
-        "description": "Basics of antenna theory, radiation patterns, and wave propagation in free space.",
-        "credit": 3,
-        "instructor": "Dr. Mark Garcia"
-    },
-    {
-        "title": "Introduction to Robotics",
-        "code": "430",
-        "subject": "CSE",
-        "description": "Principles of robotics, including kinematics, dynamics, control, and applications.",
-        "credit": 3,
-        "instructor": "Dr. Patrick White"
-    },
-    {
-        "title": "Digital Electronics",
-        "code": "300",
-        "subject": "EEE",
-        "description": "Study of digital electronic circuits, including logic gates, flip-flops, and counters.",
-        "credit": 3,
-        "instructor": "Dr. Patricia Hill"
-    },
-    {
-        "title": "Theory of Computation",
-        "code": "410",
-        "subject": "CSE",
-        "description": "Study of formal languages, automata theory, computability, and complexity theory.",
-        "credit": 3,
-        "instructor": "Dr. Linda Young"
-    },
-    {
-        "title": "Optoelectronics",
-        "code": "430",
-        "subject": "EEE",
-        "description": "Study of optoelectronic devices, including lasers, photodetectors, and optical communication systems.",
-        "credit": 3,
-        "instructor": "Dr. Jack Thomas"
+        "title": "Java: The Complete Reference, Thirteenth Edition",
+        "author": ["Herbert Schildt", "Danny Coward"],
+        "genre": "Web Programming",
+        "summary": "The definitive guide to Java programming--thoroughly revised for Java SE 21",
+        "ISBN-13": "9781265058432",
+        "publisher": "McGraw-Hill Companies",
+        "publication_date": "2024-1-11",
+        "search_times": 0
+    },
+    {
+        "title": "African Ghost Short Stories (Gothic Fantasy)",
+        "author": ["Nuzo Onoh", "Divine Che Neba", "Chinelo Onwualu"],
+        "genre": "Fiction",
+        "summary": "Following the hugely successful Black Sci-Fi Short Stories and Asian Ghost Short Stories, comes this deluxe edition of new African writing and tales rooted in ancient culture. This collection explores the deep-seated supernatural element in African storytelling whether reaching back to the spirits, ancestors and ogres of folklore or the vibrantly modern ghosts of today's African horror. New and contemporary stories complement poignant folktales such as from Nigeria.",
+        "ISBN-13": "9781804177976",
+        "publisher": "Flame Tree Collections",
+        "publication_date": "2024-5-14",
+        "search_times": 0
+    },
+    {
+        "title": "A Book title, for example",
+        "author": ["Any One"],
+        "genre": "Fiction",
+        "summary": "Some description. Not too long and not too short",
+        "ISBN-13": "1234567890123",
+        "publisher": "Arizona State University",
+        "publication_date": "2024-11-24",
+        "search_times": 0
+    },
+    {
+        "title": "Love in the Time of Algorithms",
+        "author": ["Jane Heart"],
+        "genre": "Romance",
+        "summary": "A heartfelt romance that blossoms in the digital world through algorithms and codes.",
+        "ISBN-13": "9780192831232",
+        "publisher": "Romance Reads",
+        "publication_date": "2023-06-15",
+        "search_times": 0
+    },
+    {
+        "title": "Mystery of the Lost Island",
+        "author": ["George Lance"],
+        "genre": "Mystery",
+        "summary": "A thrilling mystery surrounding an uncharted island and hidden secrets.",
+        "ISBN-13": "9781234567890",
+        "publisher": "Mystery House",
+        "publication_date": "2021-10-30",
+        "search_times": 0
+    },
+    {
+        "title": "The Last Wizard",
+        "author": ["Elena Green"],
+        "genre": "Fantasy",
+        "summary": "A young wizard's journey to save the kingdom from dark magic.",
+        "ISBN-13": "9786543210987",
+        "publisher": "Fantasy World",
+        "publication_date": "2022-08-25",
+        "search_times": 0
+    },
+    {
+        "title": "Digital Love",
+        "author": ["Amy Johnson"],
+        "genre": "Romance",
+        "summary": "A modern romance novel about finding love in the age of smartphones.",
+        "ISBN-13": "9780987654321",
+        "publisher": "Love Stories Inc.",
+        "publication_date": "2020-02-14",
+        "search_times": 0
+    },
+    {
+        "title": "The Detective’s Secret",
+        "author": ["Michael Ross"],
+        "genre": "Mystery",
+        "summary": "A seasoned detective uncovers secrets in a seemingly perfect town.",
+        "ISBN-13": "9781357911135",
+        "publisher": "Mystery Masters",
+        "publication_date": "2022-11-12",
+        "search_times": 0
+    },
+    {
+        "title": "Realm of Shadows",
+        "author": ["Fiona Black"],
+        "genre": "Fantasy",
+        "summary": "An epic fantasy adventure set in a realm dominated by shadows and magic.",
+        "ISBN-13": "9781442483202",
+        "publisher": "Epic Tales",
+        "publication_date": "2021-09-21",
+        "search_times": 0
+    },
+    {
+        "title": "Forbidden Love",
+        "author": ["Samantha Lee"],
+        "genre": "Romance",
+        "summary": "A story of forbidden love between two souls from different worlds.",
+        "ISBN-13": "9781122334455",
+        "publisher": "Romance Tales",
+        "publication_date": "2019-06-18",
+        "search_times": 0
+    },
+    {
+        "title": "The Enchanted Forest",
+        "author": ["Lily West"],
+        "genre": "Fantasy",
+        "summary": "A young girl embarks on an adventure in an enchanted forest filled with magical creatures.",
+        "ISBN-13": "9780981234567",
+        "publisher": "Fantasy Dreams",
+        "publication_date": "2018-10-05",
+        "search_times": 0
+    },
+    {
+        "title": "A Kiss in Paris",
+        "author": ["Olivia Moore"],
+        "genre": "Romance",
+        "summary": "A romantic tale set in Paris, the city of love, where two strangers meet by fate.",
+        "ISBN-13": "9782345678901",
+        "publisher": "Romance Reads",
+        "publication_date": "2020-01-14",
+        "search_times": 0
+    },
+    {
+        "title": "The Haunted Manor",
+        "author": ["Arthur Blake"],
+        "genre": "Mystery",
+        "summary": "A suspenseful mystery set in an old manor with a dark past.",
+        "ISBN-13": "9780986543210",
+        "publisher": "Mystery Press",
+        "publication_date": "2017-05-20",
+        "search_times": 0
+    },
+    {
+        "title": "Wonders of the Mystical Realm",
+        "author": ["Edward Knight"],
+        "genre": "Fantasy",
+        "summary": "An exploration of a mystical realm where magic and wonder are limitless.",
+        "ISBN-13": "9788765432109",
+        "publisher": "Mystic Books",
+        "publication_date": "2021-03-03",
+        "search_times": 0
+    },
+    {
+        "title": "Hearts Entwined",
+        "author": ["Rose Taylor"],
+        "genre": "Romance",
+        "summary": "A tale of two people finding love despite life's trials and tribulations.",
+        "ISBN-13": "9780192938372",
+        "publisher": "Heart Press",
+        "publication_date": "2022-07-11",
+        "search_times": 0
+    },
+    {
+        "title": "The Case of the Missing Painting",
+        "author": ["Nancy Wilson"],
+        "genre": "Mystery",
+        "summary": "A detective is called to solve the mysterious disappearance of a valuable painting.",
+        "ISBN-13": "9789098765432",
+        "publisher": "Mystery Writers",
+        "publication_date": "2019-08-25",
+        "search_times": 0
+    },
+    {
+        "title": "Land of the Phoenix",
+        "author": ["Thomas Grant"],
+        "genre": "Fantasy",
+        "summary": "An epic tale of adventure and valor in the legendary land of the phoenix.",
+        "ISBN-13": "9781928374650",
+        "publisher": "Fantasy Publishing",
+        "publication_date": "2022-11-30",
+        "search_times": 0
+    },
+    {
+        "title": "Romance in Rome",
+        "author": ["Laura Benson"],
+        "genre": "Romance",
+        "summary": "A romance novel set against the historical backdrop of ancient Rome.",
+        "ISBN-13": "9780192838481",
+        "publisher": "Love Classics",
+        "publication_date": "2018-04-17",
+        "search_times": 0
+    },
+    {
+        "title": "Secret of the Crystal Lake",
+        "author": ["Paul Harris"],
+        "genre": "Mystery",
+        "summary": "An old crystal lake holds secrets that a group of friends is determined to uncover.",
+        "ISBN-13": "9781982736450",
+        "publisher": "Mystery House",
+        "publication_date": "2021-12-13",
+        "search_times": 0
+    },
+    {
+        "title": "Tales of the Ancient World",
+        "author": ["Marcus Kane"],
+        "genre": "Fantasy",
+        "summary": "A series of fantastical tales set in an ancient world filled with myths.",
+        "ISBN-13": "9782135468790",
+        "publisher": "Epic Stories",
+        "publication_date": "2020-05-22",
+        "search_times": 0
+    },
+    {
+        "title": "A Winter Romance",
+        "author": ["Emma White"],
+        "genre": "Romance",
+        "summary": "A cozy winter romance about two people who find love during the holiday season.",
+        "ISBN-13": "9780098765432",
+        "publisher": "Holiday Hearts",
+        "publication_date": "2021-12-01",
+        "search_times": 0
+    },
+    {
+        "title": "Echoes of Eternity",
+        "author": ["Emily White", "James Stone"],
+        "genre": "Fantasy",
+        "summary": "A magical journey that spans worlds and explores the boundaries of time and space.",
+        "ISBN-13": "9781234567891",
+        "publisher": "Epic Stories",
+        "publication_date": "2023-02-05",
+        "search_times": 0
+    },
+    {
+        "title": "The Art of Deception",
+        "author": ["Michael Green"],
+        "genre": "Mystery",
+        "summary": "A detective unravels a web of lies in a case of high-stakes art theft.",
+        "ISBN-13": "9788765432111",
+        "publisher": "Mystery Press",
+        "publication_date": "2022-11-03",
+        "search_times": 0
+    },
+    {
+        "title": "A Love Like Stars",
+        "author": ["Lily Adams"],
+        "genre": "Romance",
+        "summary": "A celestial romance story about two souls who find each other against all odds.",
+        "ISBN-13": "9785678912345",
+        "publisher": "Romance Reads",
+        "publication_date": "2021-06-14",
+        "search_times": 0
+    },
+    {
+        "title": "Shadows in the Fog",
+        "author": ["Arthur Blake", "Nancy Wilson"],
+        "genre": "Mystery",
+        "summary": "A thrilling mystery in a town haunted by an unsolved murder.",
+        "ISBN-13": "9782345678910",
+        "publisher": "Mystery Masters",
+        "publication_date": "2023-07-11",
+        "search_times": 0
+    },
+    {
+        "title": "Winds of Autumn",
+        "author": ["Samantha Lee"],
+        "genre": "Romance",
+        "summary": "A beautiful love story set against the backdrop of autumn leaves and nostalgia.",
+        "ISBN-13": "9783216549870",
+        "publisher": "Love Classics",
+        "publication_date": "2020-10-21",
+        "search_times": 0
+    },
+    {
+        "title": "The Dragon’s Quest",
+        "author": ["Edward Knight"],
+        "genre": "Fantasy",
+        "summary": "An epic journey of a young warrior and a dragon to reclaim their lost honor.",
+        "ISBN-13": "9785678901234",
+        "publisher": "Fantasy World",
+        "publication_date": "2019-09-13",
+        "search_times": 0
+    },
+    {
+        "title": "Whispers of the Past",
+        "author": ["Nancy Wilson", "Mark Carter"],
+        "genre": "Mystery",
+        "summary": "Two detectives find themselves in a mystery that traces back decades.",
+        "ISBN-13": "9780192836481",
+        "publisher": "Mystery House",
+        "publication_date": "2021-12-20",
+        "search_times": 0
+    },
+    {
+        "title": "Songs of the Heart",
+        "author": ["Rose Taylor"],
+        "genre": "Romance",
+        "summary": "A heartfelt romance about finding love in unexpected places.",
+        "ISBN-13": "9780192938272",
+        "publisher": "Heart Press",
+        "publication_date": "2022-07-11",
+        "search_times": 0
+    },
+    {
+        "title": "The Sorcerer’s Tale",
+        "author": ["Thomas Grant"],
+        "genre": "Fantasy",
+        "summary": "A young sorcerer embarks on an epic quest to save his kingdom.",
+        "ISBN-13": "9781230987645",
+        "publisher": "Fantasy Publishing",
+        "publication_date": "2021-04-25",
+        "search_times": 0
+    },
+    {
+        "title": "Lost in the City Lights",
+        "author": ["Alice Lee"],
+        "genre": "Romance",
+        "summary": "A heartwarming story of love found amidst the hustle of city life.",
+        "ISBN-13": "9780192384765",
+        "publisher": "Romance Reads",
+        "publication_date": "2018-08-08",
+        "search_times": 0
+    },
+    {
+        "title": "Echoes of the Storm",
+        "author": ["Elena Green", "Thomas Grant"],
+        "genre": "Fantasy",
+        "summary": "An enchanted world threatened by dark forces, with only a few to stand against it.",
+        "ISBN-13": "9788765432155",
+        "publisher": "Epic Tales",
+        "publication_date": "2021-11-11",
+        "search_times": 0
+    },
+    {
+        "title": "The Mysterious Affair",
+        "author": ["Paul Harris"],
+        "genre": "Mystery",
+        "summary": "A classic murder mystery that unfolds in an elegant manor.",
+        "ISBN-13": "9788907654321",
+        "publisher": "Mystery Writers",
+        "publication_date": "2022-03-03",
+        "search_times": 0
+    },
+    {
+        "title": "Romance in the Rain",
+        "author": ["Emma White"],
+        "genre": "Romance",
+        "summary": "A romantic story set in the rainy season, where two souls meet by chance.",
+        "ISBN-13": "9780987654321",
+        "publisher": "Romance Reads",
+        "publication_date": "2020-04-14",
+        "search_times": 0
+    },
+    {
+        "title": "The Hidden Kingdom",
+        "author": ["Lily West"],
+        "genre": "Fantasy",
+        "summary": "A hidden kingdom revealed only to those who believe in magic.",
+        "ISBN-13": "9785678123450",
+        "publisher": "Fantasy Dreams",
+        "publication_date": "2019-07-19",
+        "search_times": 0
+    },
+    {
+        "title": "Mystery at Midnight",
+        "author": ["George Lance", "Nancy Wilson"],
+        "genre": "Mystery",
+        "summary": "A mysterious case unfolds at the stroke of midnight.",
+        "ISBN-13": "9782345678920",
+        "publisher": "Mystery Press",
+        "publication_date": "2018-11-05",
+        "search_times": 0
+    },
+    {
+        "title": "Magic Beneath the Stars",
+        "author": ["Emily White"],
+        "genre": "Fantasy",
+        "summary": "A magical world beneath the stars that few are privileged to see.",
+        "ISBN-13": "9786789101234",
+        "publisher": "Epic Stories",
+        "publication_date": "2021-02-21",
+        "search_times": 0
+    },
+    {
+        "title": "Passion by the Sea",
+        "author": ["Lily Adams"],
+        "genre": "Romance",
+        "summary": "A passionate romance that blossoms on the shores of a beautiful beach.",
+        "ISBN-13": "9780192838473",
+        "publisher": "Romance Classics",
+        "publication_date": "2023-05-30",
+        "search_times": 0
+    },
+    {
+        "title": "Secrets of the Old Mansion",
+        "author": ["Michael Green", "Arthur Blake"],
+        "genre": "Mystery",
+        "summary": "A mansion with secrets that are just waiting to be discovered.",
+        "ISBN-13": "9788901234567",
+        "publisher": "Mystery House",
+        "publication_date": "2020-06-20",
+        "search_times": 0
+    },
+    {
+        "title": "Tales from the Hidden Woods",
+        "author": ["Elena Green"],
+        "genre": "Fantasy",
+        "summary": "A journey through a magical forest filled with mystical creatures.",
+        "ISBN-13": "9787654321098",
+        "publisher": "Fantasy World",
+        "publication_date": "2023-08-01",
+        "search_times": 0
+    },
+    {
+        "title": "The Winter's Promise",
+        "author": ["Samantha Lee", "Emma White"],
+        "genre": "Romance",
+        "summary": "A winter romance that promises warmth against the chill of the season.",
+        "ISBN-13": "9780987123456",
+        "publisher": "Love Classics",
+        "publication_date": "2019-12-01",
+        "search_times": 0
+    },
+    {
+        "title": "The Masked Stranger",
+        "author": ["Paul Harris"],
+        "genre": "Mystery",
+        "summary": "A masked stranger holds the key to a mystery that no one expected.",
+        "ISBN-13": "9781122334450",
+        "publisher": "Mystery Writers",
+        "publication_date": "2018-01-16",
+        "search_times": 0
     }
 ]
