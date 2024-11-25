@@ -47,6 +47,21 @@ class AtlasClient:
         result = collection.delete_one(user_id)
         return result
 
+def pretty_response(response):
+    outputs = []
+    if len(response["hits"]["hits"]) == 0:
+        print("Your search returned no results.")
+    else:
+        for hit in response["hits"]["hits"]:
+            title = hit["_source"]["title"]
+            # code = hit["_source"]["code"]
+            # subject = hit["_source"]["subject"]
+            # description = hit["_source"]["description"]
+            # instructor = hit["_source"]["instructor"]
+            # pretty_output = f"Title: {title}; Number: {subject} {code}; Description: {description}; Instructor: {instructor}"
+            outputs.append(hit)
+    return outputs
+
 app = Flask(__name__)
 
 atlas_client = AtlasClient(url, DB_NAME)
@@ -56,8 +71,8 @@ client = Elasticsearch(
     cloud_id=cloud_id,
     api_key=api_key
 )
-if client.indices.exists(index=INDEX_NAME):
-    client.indices.delete(index=INDEX_NAME)
+# if client.indices.exists(index=INDEX_NAME):
+#     client.indices.delete(index=INDEX_NAME)
 if not client.indices.exists(index=INDEX_NAME):
     mappings = {
         "properties": {
@@ -128,6 +143,7 @@ def delete():
 
     resp = atlas_client.delete(collection_name=COLLECTION_NAME, user_id={"email": email})
     return jsonify({"message": f"User deleted successfully. See you again"}), 202
+
 # Test
 @app.route('/test', methods=['GET'])
 def get_user_data(current_user_id):
@@ -136,6 +152,31 @@ def get_user_data(current_user_id):
     }
 
     return jsonify(response), 200
+
+# Elastic Search Home
+@app.route("/elasticsearch")
+def home():
+    try:
+        info = client.info()
+        print("Connected to Elasticsearch:", info)
+    except Exception as e:
+        print("Error connecting to Elasticsearch:", e)
+    return f"{info}"
+
+# Search by semantic
+@app.route("/elasticsearch/search")
+def search():
+    query = request.args.get("query") 
+    response = client.search(
+        index=INDEX_NAME,
+        knn={
+            "field": "summary_vector",
+            "query_vector": model.encode(query),
+            "k": 10,
+            "num_candidates": 100,
+        },
+    )
+    return pretty_response(response)
 
 if __name__ == "__main__":
     app.run(port=8000)
