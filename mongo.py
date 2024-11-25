@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 from flask import Flask, request, jsonify
-from pymongo import MongoClient
 from elasticsearch import Elasticsearch
 from urllib.request import urlopen
 import json
@@ -47,21 +46,6 @@ class AtlasClient:
         result = collection.delete_one(user_id)
         return result
 
-def pretty_response(response):
-    outputs = []
-    if len(response["hits"]["hits"]) == 0:
-        print("Your search returned no results.")
-    else:
-        for hit in response["hits"]["hits"]:
-            title = hit["_source"]["title"]
-            # code = hit["_source"]["code"]
-            # subject = hit["_source"]["subject"]
-            # description = hit["_source"]["description"]
-            # instructor = hit["_source"]["instructor"]
-            # pretty_output = f"Title: {title}; Number: {subject} {code}; Description: {description}; Instructor: {instructor}"
-            outputs.append(hit)
-    return outputs
-
 app = Flask(__name__)
 
 atlas_client = AtlasClient(url, DB_NAME)
@@ -71,8 +55,8 @@ client = Elasticsearch(
     cloud_id=cloud_id,
     api_key=api_key
 )
-# if client.indices.exists(index=INDEX_NAME):
-#     client.indices.delete(index=INDEX_NAME)
+if client.indices.exists(index=INDEX_NAME):
+    client.indices.delete(index=INDEX_NAME)
 if not client.indices.exists(index=INDEX_NAME):
     mappings = {
         "properties": {
@@ -113,6 +97,37 @@ if not client.indices.exists(index=INDEX_NAME):
         operations.append(book)
     client.bulk(index=INDEX_NAME, operations=operations, refresh=True)
 
+def pretty_response(response):
+    outputs = []
+    if len(response["hits"]["hits"]) == 0:
+        print("Your search returned no results.")
+    else:
+        for hit in response["hits"]["hits"]:
+            output = {
+                "id": hit["_id"],
+                "score": hit["_score"],
+                "title": hit["_source"]["title"],
+                "date": hit["_source"]["publication_date"],
+                "publisher": hit["_source"]["publisher"],
+                "search_times": hit["_source"]["search_times"],
+                "author": hit["_source"]["author"],
+                "isbn": hit["_source"]["ISBN-13"],
+                "genre": hit["_source"]["genre"],
+                "summary": hit["_source"]["summary"]
+            }
+            outputs.append(output)
+    return outputs
+
+def search_time_increase(response):
+    for resp in response:
+        update_body = {
+            "script": {
+                "source": "ctx._source.search_times += 1",
+                "lang": "painless"
+            }
+        }
+        result = client.update(index=INDEX_NAME, id=resp["id"], body=update_body)
+        # print(result)
 
 # Create account
 @app.route('/register', methods=['POST'])
@@ -163,8 +178,8 @@ def home():
         print("Error connecting to Elasticsearch:", e)
     return f"{info}"
 
-# Search by semantic
-@app.route("/elasticsearch/search")
+# Search by description
+@app.route("/elasticsearch/summary")
 def search():
     query = request.args.get("query") 
     response = client.search(
@@ -176,6 +191,7 @@ def search():
             "num_candidates": 100,
         },
     )
+    search_time_increase(pretty_response(response))
     return pretty_response(response)
 
 if __name__ == "__main__":
