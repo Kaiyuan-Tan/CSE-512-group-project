@@ -81,6 +81,7 @@ if not client.indices.exists(index=INDEX_NAME):
             },
             "publication_date": {
                 "type": "date",
+                "format": "yyyy-MM-dd||yyyy-M-d||epoch_millis"
             },
             "search_times": {
                 "type": "integer",
@@ -95,7 +96,9 @@ if not client.indices.exists(index=INDEX_NAME):
         operations.append({"index": {"_index": INDEX_NAME}})
         book["summary_vector"] = model.encode(book["summary"]).tolist()
         operations.append(book)
-    client.bulk(index=INDEX_NAME, operations=operations, refresh=True)
+    result = client.bulk(index=INDEX_NAME, operations=operations, refresh=True)
+    # count = client.count(index=INDEX_NAME)
+    print(result)
 
 def pretty_response(response):
     outputs = []
@@ -159,15 +162,6 @@ def delete():
     resp = atlas_client.delete(collection_name=COLLECTION_NAME, user_id={"email": email})
     return jsonify({"message": f"User deleted successfully. See you again"}), 202
 
-# Test
-@app.route('/test', methods=['GET'])
-def get_user_data(current_user_id):
-    response = {
-        "message": f"succeed, {current_user_id}"
-    }
-
-    return jsonify(response), 200
-
 # Elastic Search Home
 @app.route("/elasticsearch")
 def home():
@@ -178,7 +172,7 @@ def home():
         print("Error connecting to Elasticsearch:", e)
     return f"{info}"
 
-# Search by description
+# Search by summary
 @app.route("/elasticsearch/summary")
 def search():
     query = request.args.get("query") 
