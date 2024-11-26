@@ -45,6 +45,11 @@ class AtlasClient:
         collection = self.database[collection_name]
         result = collection.delete_one(user_id)
         return result
+    
+    def update(self, collection_name, user_id, new_value):
+        collection = self.database[collection_name]
+        result = collection.update_one(user_id, new_value)
+        return result
 
 app = Flask(__name__)
 
@@ -55,17 +60,22 @@ client = Elasticsearch(
     cloud_id=cloud_id,
     api_key=api_key
 )
-if client.indices.exists(index=INDEX_NAME):
-    client.indices.delete(index=INDEX_NAME)
+# if client.indices.exists(index=INDEX_NAME):
+    # client.indices.delete(index=INDEX_NAME)
 if not client.indices.exists(index=INDEX_NAME):
     mappings = {
         "properties": {
             "title": {
-                "type": "keyword",
+                "type": "text",
             },
-            "author": {
-                "type": "keyword",
-            },
+            # "author": {
+            #     "type": "text",
+            #     "fields":{
+            #         "keyword":{
+            #             "type":"keyword"
+            #         }
+            #     }
+            # },
             "genre": {
                 "type": "keyword",
             }, 
@@ -103,7 +113,7 @@ if not client.indices.exists(index=INDEX_NAME):
 def pretty_response(response):
     outputs = []
     if len(response["hits"]["hits"]) == 0:
-        print("Your search returned no results.")
+        return("Your search returned no results.")
     else:
         for hit in response["hits"]["hits"]:
             output = {
@@ -136,6 +146,8 @@ def search_time_increase(response):
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
+    if 'username' not in data:
+        return jsonify({"message": "Please enter username"}), 400
     username = data['username']
     email = data['email']
     user_info = {
@@ -143,12 +155,11 @@ def register():
         "email": email,
         "search_history":[]
     }
-
     if atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email}):
         return jsonify({"message": "Email already exists"}), 400
 
     resp = atlas_client.insert(collection_name=COLLECTION_NAME, user_info=user_info)
-    return jsonify({"message": f"User registered successfully, id: {resp.inserted_id}"}), 201
+    return jsonify({"message": f"User registered successfully, id: {resp.inserted_id}"}), 200
 
 # Delete account
 @app.route('/delete', methods=['POST'])
@@ -160,7 +171,24 @@ def delete():
         return jsonify({"message": "Email do not exist"}), 400
 
     resp = atlas_client.delete(collection_name=COLLECTION_NAME, user_id={"email": email})
-    return jsonify({"message": f"User deleted successfully. See you again"}), 202
+    return jsonify({"message": f"User deleted successfully. See you again"}), 200
+
+# User search history update
+@app.route("/searched", methods=['POST'])
+def search_history_update():
+    data = request.json
+    email = data['email']
+    query = data['query']
+    update = {
+        "$push": {
+            "search_history": {
+                "$each": query
+            }
+        }
+    }
+    resp = atlas_client.update(collection_name=COLLECTION_NAME, user_id={"email": email},new_value=update)
+    return jsonify({"message": "User search history updated"}), 200
+    # return 0
 
 # Elastic Search Home
 @app.route("/elasticsearch")
@@ -186,7 +214,42 @@ def search():
         },
     )
     search_time_increase(pretty_response(response))
-    return pretty_response(response)
+    # return 
+    return jsonify({"message": f"Requetst success", "data": pretty_response(response)}), 203
+
+# Filter by condition
+@app.route("/elasticsearch/filter", methods=['GET'])
+def filter():
+    author = request.args.get("author") 
+    title = request.args.get("title") 
+    genre = request.args.get("genre") 
+    isbn = request.args.get("isbn") 
+    publisher = request.args.get("publisher") 
+
+    filter = []
+    if author:
+        filter.append({"match": {"author": author}})
+    if isbn:
+        filter.append({"term": {"ISBN-13": isbn}})
+    if title:
+        filter.append({"match": {"title": title}})
+    if publisher:
+        filter.append({"term": {"publisher": publisher}})
+    if genre:
+        filter.append({"term": {"genre": genre}})
+
+    query = {
+        "query": {
+            "bool":{
+                "filter": filter
+                # "must":must
+            }
+        }
+    }
+    response = client.search(index=INDEX_NAME, body=query)
+    search_time_increase(pretty_response(response))
+    return jsonify({"message": f"Get data successfully", "data": pretty_response(response)}), 200
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=31001)
+    app.run(host="0.0.0.0",port=31001)
+    # app.run(port=8000)
