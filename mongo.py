@@ -132,6 +132,8 @@ def pretty_response(response):
     return outputs
 
 def search_time_increase(response):
+    if response=="Your search returned no results.":
+        return 0
     for resp in response:
         update_body = {
             "script": {
