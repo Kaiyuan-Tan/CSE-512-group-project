@@ -4,6 +4,7 @@ from elasticsearch import Elasticsearch
 from urllib.request import urlopen
 import json
 from sentence_transformers import SentenceTransformer
+from flask_cors import CORS
 
 cloud_id = "My_deployment:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJDZlODAxZjQ5YzAwNDQ5MGRhNDFlOGM3Y2U0MmFmYmQxJGQ2ZTE2YjQ1OWNjMTRhNmZiNDE0ZGZmNmJmN2JjMjll"  # 从 Elastic Cloud 控制台获取
 api_key = "TzVkMldKTUJDVjk5bTVXZVFFeGg6LVpiZk04UFZUUE95QXpjbE9VZUttdw=="
@@ -52,6 +53,7 @@ class AtlasClient:
         return result
 
 app = Flask(__name__)
+CORS(app)
 
 atlas_client = AtlasClient(url, DB_NAME)
 collection = atlas_client.get_collection(COLLECTION_NAME)
@@ -253,5 +255,5 @@ def filter():
     return jsonify({"message": f"Get data successfully", "data": pretty_response(response)}), 200
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=31001)
-    # app.run(port=8000)
+    # app.run(host="0.0.0.0",port=31001)
+    app.run(port=8000)
