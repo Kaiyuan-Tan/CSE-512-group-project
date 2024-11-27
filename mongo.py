@@ -255,5 +255,5 @@ def filter():
     return jsonify({"message": f"Get data successfully", "data": pretty_response(response)}), 200
 
 if __name__ == "__main__":
-    # app.run(host="0.0.0.0",port=31001)
-    app.run(port=8000)
+    app.run(host="0.0.0.0",port=31001)
+    # app.run(port=8000)
