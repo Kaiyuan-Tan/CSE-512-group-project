@@ -194,9 +194,9 @@ def search_history_update():
     return jsonify({"message": "User search history updated"}), 200
     # return 0
 
-# Elastic Search Home
+# Elastic Search Info
 @app.route("/elasticsearch")
-def home():
+def elastic_info():
     try:
         info = client.info()
         print("Connected to Elasticsearch:", info)
@@ -253,6 +253,38 @@ def filter():
     response = client.search(index=INDEX_NAME, body=query)
     search_time_increase(pretty_response(response))
     return jsonify({"message": f"Get data successfully", "data": pretty_response(response)}), 200
+
+# Popular search
+@app.route("/elasticsearch/popular", methods=['GET'])
+def popular():
+    order = request.args.get("order")
+    if order!="asc" and order!="desc":
+        order = "desc"
+    query = {
+        "query": {
+            "match_all": {}
+        },
+        "sort": [
+            {
+                "search_times": {
+                    "order": order
+                    # "order": "asc"
+
+                }
+            }
+        ]
+    }
+    response = client.search(index=INDEX_NAME, body=query)
+    # search_time_increase(pretty_response(response))
+    return jsonify({"message": f"Get data successfully", "data": pretty_response(response)}), 200
+
+# Personalized Recommendations
+@app.route("/elasticsearch/customize", methods=['POST'])
+def customize():
+    data = request.json
+    email = data['email']
+    atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email}) 
+    return 0
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=31001)
