@@ -194,7 +194,7 @@ def filter():
     if isbn:
         filter.append({"term": {"ISBN-13": isbn}})
     if title:
-        filter.append({"match": {"title": title}})
+        filter.append({"match_phrase": {"title": title}})
     if publisher:
         filter.append({"term": {"publisher": publisher}})
     if genre:
