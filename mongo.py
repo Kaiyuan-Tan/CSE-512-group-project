@@ -5,12 +5,9 @@ from urllib.request import urlopen
 import json
 from sentence_transformers import SentenceTransformer
 from flask_cors import CORS
+import yaml
 
-cloud_id = "My_deployment:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJDZlODAxZjQ5YzAwNDQ5MGRhNDFlOGM3Y2U0MmFmYmQxJGQ2ZTE2YjQ1OWNjMTRhNmZiNDE0ZGZmNmJmN2JjMjll"  # 从 Elastic Cloud 控制台获取
-api_key = "TzVkMldKTUJDVjk5bTVXZVFFeGg6LVpiZk04UFZUUE95QXpjbE9VZUttdw=="
 model = SentenceTransformer("all-MiniLM-L6-v2")
-url = "mongodb+srv://ktan24:mongodb@cluster0.t9a5q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-data_url = "https://raw.githubusercontent.com/Kaiyuan-Tan/CSE-512-group-project/refs/heads/main/data.json"
 
 DB_NAME = "project"
 COLLECTION_NAME = "user"
@@ -54,63 +51,6 @@ class AtlasClient:
 
 app = Flask(__name__)
 CORS(app)
-
-atlas_client = AtlasClient(url, DB_NAME)
-collection = atlas_client.get_collection(COLLECTION_NAME)
-app.secret_key = "CSE-512-GROUP-PROJECT-2024"
-client = Elasticsearch(
-    cloud_id=cloud_id,
-    api_key=api_key
-)
-# if client.indices.exists(index=INDEX_NAME):
-    # client.indices.delete(index=INDEX_NAME)
-if not client.indices.exists(index=INDEX_NAME):
-    mappings = {
-        "properties": {
-            "title": {
-                "type": "text",
-            },
-            # "author": {
-            #     "type": "text",
-            #     "fields":{
-            #         "keyword":{
-            #             "type":"keyword"
-            #         }
-            #     }
-            # },
-            "genre": {
-                "type": "keyword",
-            }, 
-            "summary_vector": {
-                "type": "dense_vector",
-                "dims": 384,
-            },
-            "ISBN_13": {
-                "type": "keyword",
-            },
-            "publisher": {
-                "type": "keyword",
-            },
-            "publication_date": {
-                "type": "date",
-                "format": "yyyy-MM-dd||yyyy-M-d||epoch_millis"
-            },
-            "search_times": {
-                "type": "integer",
-            },
-        }
-    }
-    response = urlopen(data_url)
-    books = json.loads(response.read())
-    operations = []
-    client.indices.create(index=INDEX_NAME, mappings=mappings)
-    for book in books:
-        operations.append({"index": {"_index": INDEX_NAME}})
-        book["summary_vector"] = model.encode(book["summary"]).tolist()
-        operations.append(book)
-    result = client.bulk(index=INDEX_NAME, operations=operations, refresh=True)
-    # count = client.count(index=INDEX_NAME)
-    print(result)
 
 def pretty_response(response):
     outputs = []
@@ -157,7 +97,8 @@ def register():
     user_info = {
         "username": username,
         "email": email,
-        "search_history":[]
+        "search_history":[],
+        "read_books":[]
     }
     if atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email}):
         return jsonify({"message": "Email already exists"}), 400
@@ -182,7 +123,7 @@ def delete():
 def search_history_update():
     data = request.json
     email = data['email']
-    query = data['query']
+    query = data['search']
     update = {
         "$push": {
             "search_history": {
@@ -192,6 +133,23 @@ def search_history_update():
     }
     resp = atlas_client.update(collection_name=COLLECTION_NAME, user_id={"email": email},new_value=update)
     return jsonify({"message": "User search history updated"}), 200
+    # return 0
+
+# User search history update
+@app.route("/read", methods=['POST'])
+def read_books_update():
+    data = request.json
+    email = data['email']
+    query = data['read']
+    update = {
+        "$push": {
+            "read_books": {
+                "$each": query
+            }
+        }
+    }
+    resp = atlas_client.update(collection_name=COLLECTION_NAME, user_id={"email": email},new_value=update)
+    return jsonify({"message": "User read books updated"}), 200
     # return 0
 
 # Elastic Search Info
@@ -268,8 +226,6 @@ def popular():
             {
                 "search_times": {
                     "order": order
-                    # "order": "asc"
-
                 }
             }
         ]
@@ -283,9 +239,119 @@ def popular():
 def customize():
     data = request.json
     email = data['email']
-    atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email}) 
-    return 0
+    # Get user search history
+    user = atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email})
+    search_history = user[0]["search_history"]
+    read_books = user[0]["read_books"]
+    response = client.search(
+        index=INDEX_NAME,
+        body={
+            "query": {
+                "bool": {
+                    "must": {
+                        "knn": {
+                            "field": "book_vector",
+                            "query_vector": model.encode(search_history).mean(axis=0),
+                            "k": 10,
+                            "num_candidates":100,
+                        }
+                    },
+                    "must_not": {
+                        "terms": {
+                            "_id": read_books
+                        }
+                    }
+                }
+            }
+        }
+    )
+    return jsonify({"message": f"Requetst success", "data": pretty_response(response)}), 200
+
+# Insert books
+@app.route("/elasticsearch/insert", methods=['POST'])
+def insert():
+    books = request.json
+    operations = []
+    for book in books:
+        operations.append({"index": {"_index": INDEX_NAME}})
+        book["summary_vector"] = model.encode(book["summary"]).tolist()
+        book["book_vector"] = model.encode(book["author"]+[book["genre"]]+[book["title"]]+[book["summary"]]).mean(axis=0).tolist()
+        operations.append(book)
+    result = client.bulk(index=INDEX_NAME, operations=operations, refresh=True)
+    if result.body['errors'] == False:
+        print("No error in inserting books")
+        return jsonify({"message": "Successfully inserted"}), 200
+    else:
+        print(result)
+        return jsonify({"message": "Errors when inserting"}), 400
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=31001)
+    with open("config.yaml", "r", encoding="utf-8") as file:
+        config = yaml.safe_load(file)
+    cloud_id = config["cloud_id"] 
+    api_key = config["api_key"] 
+    url = config["mongodb_url"] 
+    data_url = config["data_url"]
+    port = config["port"] 
+
+    atlas_client = AtlasClient(url, DB_NAME)
+    collection = atlas_client.get_collection(COLLECTION_NAME)
+    app.secret_key = "CSE-512-GROUP-PROJECT-2024"
+
+    client = Elasticsearch(
+        cloud_id=cloud_id,
+        api_key=api_key
+    )
+
+    # if client.indices.exists(index=INDEX_NAME):
+    #     client.indices.delete(index=INDEX_NAME)
+    if not client.indices.exists(index=INDEX_NAME):
+        mappings = {
+            "properties": {
+                "title": {
+                    "type": "text",
+                },
+                "genre": {
+                    "type": "keyword",
+                }, 
+                "summary_vector": {
+                    "type": "dense_vector",
+                    "dims": 384,
+                },
+                "ISBN_13": {
+                    "type": "keyword",
+                },
+                "publisher": {
+                    "type": "keyword",
+                },
+                "publication_date": {
+                    "type": "date",
+                    "format": "yyyy-MM-dd||yyyy-M-d||epoch_millis"
+                },
+                "search_times": {
+                    "type": "integer",
+                },
+                "book_vector":{
+                    "type": "dense_vector",
+                    "dims": 384,
+                },
+            }
+        }
+        response = urlopen(data_url)
+        books = json.loads(response.read())
+        operations = []
+        client.indices.create(index=INDEX_NAME, mappings=mappings)
+        for book in books:
+            operations.append({"index": {"_index": INDEX_NAME}})
+            book["summary_vector"] = model.encode(book["summary"]).tolist()
+            book["book_vector"] = model.encode(book["author"]+[book["genre"]]+[book["title"]]+[book["summary"]]).mean(axis=0).tolist()
+            operations.append(book)
+        result = client.bulk(index=INDEX_NAME, operations=operations, refresh=True)
+        # count = client.count(index=INDEX_NAME)
+        if result.body['errors'] == False:
+            print("No error in creating index")
+        else:
+            print(result)
+
+    app.run(host="0.0.0.0",port=port)
     # app.run(port=8000)
