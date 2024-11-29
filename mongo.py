@@ -64,6 +64,7 @@ def pretty_response(response):
                 "title": hit["_source"]["title"],
                 "date": hit["_source"]["publication_date"],
                 "publisher": hit["_source"]["publisher"],
+                "edition": hit["_source"]["edition"],
                 "search_times": hit["_source"]["search_times"],
                 "author": hit["_source"]["author"],
                 "isbn": hit["_source"]["ISBN-13"],
@@ -92,8 +93,12 @@ def register():
     data = request.json
     if 'username' not in data:
         return jsonify({"message": "Please enter username"}), 400
+    if 'email' not in data:
+        return jsonify({"message": "Please enter email"}), 400
     username = data['username']
     email = data['email']
+    if username or email:
+        return jsonify({"message": "Please enter valid username or email"}), 400
     user_info = {
         "username": username,
         "email": email,
@@ -122,8 +127,14 @@ def delete():
 @app.route("/searched", methods=['POST'])
 def search_history_update():
     data = request.json
+    if 'search' not in data:
+        return jsonify({"message": "Please enter search history"}), 400
+    if 'email' not in data:
+        return jsonify({"message": "Please enter email"}), 400
     email = data['email']
     query = data['search']
+    if len(query) < 1 or type(query) is not list:
+        return jsonify({"message": "Invalid search history."}), 400
     update = {
         "$push": {
             "search_history": {
@@ -186,7 +197,9 @@ def filter():
     title = request.args.get("title") 
     genre = request.args.get("genre") 
     isbn = request.args.get("isbn") 
-    publisher = request.args.get("publisher") 
+    publisher = request.args.get("publisher")
+    edition = request.args.get("edition") 
+
 
     filter = []
     if author:
@@ -197,6 +210,8 @@ def filter():
         filter.append({"match_phrase": {"title": title}})
     if publisher:
         filter.append({"term": {"publisher": publisher}})
+    if edition:
+        filter.append({"term": {"edition": edition}})
     if genre:
         filter.append({"term": {"genre": genre}})
 
@@ -239,10 +254,27 @@ def popular():
 def customize():
     data = request.json
     email = data['email']
+    if 'email' not in data:
+        return jsonify({"message": "Please enter email"}), 400
     # Get user search history
     user = atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email})
     search_history = user[0]["search_history"]
     read_books = user[0]["read_books"]
+    if len(search_history) < 1:
+        query = {
+            "query": {
+                "match_all": {}
+            },
+            "sort": [
+                {
+                    "search_times": {
+                        "order": "desc"
+                    }
+                }
+            ]
+        }
+        response = client.search(index=INDEX_NAME, body=query)
+        return jsonify({"message": f"Get data successfully", "data": pretty_response(response)}), 200
     response = client.search(
         index=INDEX_NAME,
         body={
@@ -273,9 +305,22 @@ def insert():
     books = request.json
     operations = []
     for book in books:
+        if 'title' not in book:
+            return jsonify({"message": "Please enter title"}), 400
+        if 'author' not in book:
+            return jsonify({"message": "Please enter author"}), 400
+        if 'genre' not in book:
+            return jsonify({"message": "Please enter genre"}), 400
+        if 'summary' not in book:
+            return jsonify({"message": "Please enter summary"}), 400
+        genre = book['genre']
+        title = book['title']
+        summary = book['summary']
+        if not genre or not title or not summary:
+            return jsonify({"message": "Book lack essential information"}), 400
         operations.append({"index": {"_index": INDEX_NAME}})
         book["summary_vector"] = model.encode(book["summary"]).tolist()
-        book["book_vector"] = model.encode(book["author"]+[book["genre"]]+[book["title"]]+[book["summary"]]).mean(axis=0).tolist()
+        book["book_vector"] = model.encode(book["author"]+[genre]+[title]+[summary]).mean(axis=0).tolist()
         operations.append(book)
     result = client.bulk(index=INDEX_NAME, operations=operations, refresh=True)
     if result.body['errors'] == False:
@@ -328,6 +373,9 @@ if __name__ == "__main__":
                     "type": "date",
                     "format": "yyyy-MM-dd||yyyy-M-d||epoch_millis"
                 },
+                "edition":{
+                    "type": "integer",
+                },
                 "search_times": {
                     "type": "integer",
                 },
@@ -353,5 +401,5 @@ if __name__ == "__main__":
         else:
             print(result)
 
-    app.run(host="0.0.0.0",port=port)
-    # app.run(port=8000)
+    # app.run(host="0.0.0.0",port=port)
+    app.run(port=8000)

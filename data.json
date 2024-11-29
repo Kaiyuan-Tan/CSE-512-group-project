@@ -1,3 +1,4 @@
+
 [
     {
         "title": "Java: The Complete Reference, Thirteenth Edition",
@@ -17,6 +18,7 @@
         "ISBN-13": "9781804177976",
         "publisher": "Flame Tree Collections",
         "publication_date": "2024-5-14",
+        "edition": 3,
         "search_times": 0
     },
     {
@@ -27,6 +29,7 @@
         "ISBN-13": "9780134610993",
         "publisher": "Pearson",
         "publication_date": "2024-2-15",
+        "edition": 4,
         "search_times": 0
     },
     {
@@ -37,6 +40,7 @@
         "ISBN-13": "9780994567890",
         "publisher": "Blackstone Publishing",
         "publication_date": "2024-7-20",
+        "edition": 2,
         "search_times": 0
     },
     {
