@@ -348,8 +348,8 @@ if __name__ == "__main__":
         api_key=api_key
     )
 
-    if client.indices.exists(index=INDEX_NAME):
-        client.indices.delete(index=INDEX_NAME)
+    # if client.indices.exists(index=INDEX_NAME):
+        # client.indices.delete(index=INDEX_NAME)
     if not client.indices.exists(index=INDEX_NAME):
         mappings = {
             "properties": {
@@ -401,5 +401,5 @@ if __name__ == "__main__":
         else:
             print(result)
 
-    # app.run(host="0.0.0.0",port=port)
-    app.run(port=8000)
+    app.run(host="0.0.0.0",port=port)
+    # app.run(port=8000)
