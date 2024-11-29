@@ -97,7 +97,7 @@ def register():
         return jsonify({"message": "Please enter email"}), 400
     username = data['username']
     email = data['email']
-    if username or email:
+    if not username or not email:
         return jsonify({"message": "Please enter valid username or email"}), 400
     user_info = {
         "username": username,
@@ -105,7 +105,7 @@ def register():
         "search_history":[],
         "read_books":[]
     }
-    if atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email}):
+    if secondary_client.find(collection_name=COLLECTION_NAME, filter={"email": email}):
         return jsonify({"message": "Email already exists"}), 400
 
     resp = atlas_client.insert(collection_name=COLLECTION_NAME, user_info=user_info)
@@ -117,7 +117,7 @@ def delete():
     data = request.json
     email = data['email']
 
-    if not atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email}):
+    if not secondary_client.find(collection_name=COLLECTION_NAME, filter={"email": email}):
         return jsonify({"message": "Email do not exist"}), 400
 
     resp = atlas_client.delete(collection_name=COLLECTION_NAME, user_id={"email": email})
@@ -257,7 +257,7 @@ def customize():
     if 'email' not in data:
         return jsonify({"message": "Please enter email"}), 400
     # Get user search history
-    user = atlas_client.find(collection_name=COLLECTION_NAME, filter={"email": email})
+    user = secondary_client.find(collection_name=COLLECTION_NAME, filter={"email": email})
     search_history = user[0]["search_history"]
     read_books = user[0]["read_books"]
     if len(search_history) < 1:
@@ -335,12 +335,16 @@ if __name__ == "__main__":
         config = yaml.safe_load(file)
     cloud_id = config["cloud_id"] 
     api_key = config["api_key"] 
-    url = config["mongodb_url"] 
+    primary_url = config["primary_url"]
+    secondary_url = config["secondary_url"]
     data_url = config["data_url"]
     port = config["port"] 
 
-    atlas_client = AtlasClient(url, DB_NAME)
-    collection = atlas_client.get_collection(COLLECTION_NAME)
+
+    atlas_client = AtlasClient(primary_url, DB_NAME)
+    secondary_client = AtlasClient(secondary_url, DB_NAME)
+    print(atlas_client.ping())
+    print(secondary_client.ping())
     app.secret_key = "CSE-512-GROUP-PROJECT-2024"
 
     client = Elasticsearch(
@@ -401,5 +405,5 @@ if __name__ == "__main__":
         else:
             print(result)
 
-    app.run(host="0.0.0.0",port=port)
-    # app.run(port=8000)
+    # app.run(host="0.0.0.0",port=port)
+    app.run(port=8000)
